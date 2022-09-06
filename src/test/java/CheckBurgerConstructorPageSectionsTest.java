@@ -1,4 +1,3 @@
-import api.UserAPI;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
@@ -22,27 +21,30 @@ public class CheckBurgerConstructorPageSectionsTest {
     }
 
     @Test
-    @DisplayName("Проверка валидации пароля")
+    @DisplayName("Проверка смены раздела сборки ингредиентов для бургера")
     public void checkSectionBuns() {
-        String expectedResult = "Булки";
+        String expectedResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
+                .checkSelectedSectionBuns();
         String actualResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
                 .checkSectionBuns();
         Assert.assertEquals("Ожидается, что при нажатии на раздел Булки, произойдет скролл до заголовка Булки", expectedResult, actualResult);
     }
 
     @Test
-    @DisplayName("Проверка валидации пароля")
+    @DisplayName("Проверка смены раздела сборки ингредиентов для бургера")
     public void checkSectionSauce() {
-        String expectedResult = "Соусы";
+        String expectedResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
+                .checkSelectedSectionSauce();
         String actualResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
                 .checkSectionSauce();
         Assert.assertEquals("Ожидается, что при нажатии на раздел Соусы, произойдет скролл до заголовка Соусы", expectedResult, actualResult);
     }
 
     @Test
-    @DisplayName("Проверка валидации пароля")
+    @DisplayName("Проверка смены раздела сборки ингредиентов для бургера")
     public void checkSectionFilling() {
-        String expectedResult = "Начинки";
+        String expectedResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
+                .checkSelectedSectionFilling();
         String actualResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
                 .checkSectionFilling();
         Assert.assertEquals("Ожидается, что при нажатии на раздел Начинки, произойдет скролл до заголовка Начинки", expectedResult, actualResult);

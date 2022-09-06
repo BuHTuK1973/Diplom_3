@@ -33,6 +33,18 @@ public class BurgerСonstructorPage extends Header {
     @FindBy(how = How.XPATH, using = ".//section[@class='BurgerIngredients_ingredients__1N8v2']/div[1]/div[3]")
     private SelenideElement sectionFilling;
 
+    //выберет именно нажатый раздел Булок, но для этого используем клик на раздел, иначе тест упадет
+    @FindBy(how = How.XPATH, using = ".//section[@class='BurgerIngredients_ingredients__1N8v2']//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']")
+    private SelenideElement selectedSectionBuns;
+
+    //выберет именно нажатый раздел Соусов, но для этого используем клик на раздел, иначе тест упадет
+    @FindBy(how = How.XPATH, using = ".//section[@class='BurgerIngredients_ingredients__1N8v2']//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']")
+    private SelenideElement selectedSectionSauce;
+
+    //выберет именно нажатый раздел Начинок, но для этого используем клик на раздел, иначе тест упадет
+    @FindBy(how = How.XPATH, using = ".//section[@class='BurgerIngredients_ingredients__1N8v2']//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']")
+    private SelenideElement selectedSectionFilling;
+
     @FindBy(how = How.XPATH, using = ".//h2[text()='Булки']")
     private SelenideElement titleBuns;
 
@@ -74,6 +86,21 @@ public class BurgerСonstructorPage extends Header {
         sectionFilling.click();
     }
 
+    @Step("Нажимаем на секцию Булочки в области с ингредиентами")
+    public void clickSectionBunsWithSelect() {
+        selectedSectionBuns.click();
+    }
+
+    @Step("Нажимаем на секцию Соусы в области с ингредиентами")
+    public void clickSectionSauceWithSelect() {
+        selectedSectionSauce.click();
+    }
+
+    @Step("Нажимаем на секцию Filling в области с ингредиентами")
+    public void clickSectionFillingWithSelect() {
+        selectedSectionFilling.click();
+    }
+
     public String checkSectionBuns() {
         clickSectionFilling();
         sectionFilling.shouldBe(Condition.appear);
@@ -81,13 +108,27 @@ public class BurgerСonstructorPage extends Header {
         return sectionBuns.shouldBe(Condition.appear).getText();
     }
 
+    public String checkSelectedSectionBuns(){
+        return selectedSectionBuns.shouldBe(Condition.appear).getText();
+    }
+
     public String checkSectionSauce() {
         clickSectionSauce();
         return sectionSauce.shouldBe(Condition.appear).getText();
     }
 
+    public String checkSelectedSectionSauce(){
+        clickSectionSauce();
+        return selectedSectionSauce.shouldBe(Condition.appear).getText();
+    }
+
     public String checkSectionFilling() {
         clickSectionFilling();
         return sectionFilling.shouldBe(Condition.appear).getText();
+    }
+
+    public String checkSelectedSectionFilling(){
+        clickSectionFilling();
+        return selectedSectionFilling.shouldBe(Condition.appear).getText();
     }
 }

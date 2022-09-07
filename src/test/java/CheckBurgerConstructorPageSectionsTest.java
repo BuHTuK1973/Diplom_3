@@ -23,30 +23,27 @@ public class CheckBurgerConstructorPageSectionsTest {
     @Test
     @DisplayName("Проверка смены раздела сборки ингредиентов для бургера")
     public void checkSectionBuns() {
-        String expectedResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
-                .checkSelectedSectionBuns();
+        String expectedResult = "Булки";
         String actualResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
-                .checkSectionBuns();
+                .checkActiveSectionBuns();
         Assert.assertEquals("Ожидается, что при нажатии на раздел Булки, произойдет скролл до заголовка Булки", expectedResult, actualResult);
     }
 
     @Test
     @DisplayName("Проверка смены раздела сборки ингредиентов для бургера")
     public void checkSectionSauce() {
-        String expectedResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
-                .checkSelectedSectionSauce();
+        String expectedResult = "Соусы";
         String actualResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
-                .checkSectionSauce();
+                .checkActiveSectionSauce();
         Assert.assertEquals("Ожидается, что при нажатии на раздел Соусы, произойдет скролл до заголовка Соусы", expectedResult, actualResult);
     }
 
     @Test
     @DisplayName("Проверка смены раздела сборки ингредиентов для бургера")
     public void checkSectionFilling() {
-        String expectedResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
-                .checkSelectedSectionFilling();
+        String expectedResult = "Начинки";
         String actualResult = Selenide.open(BurgerСonstructorPage.URL, BurgerСonstructorPage.class)
-                .checkSectionFilling();
+                .checkActiveSectionFilling();
         Assert.assertEquals("Ожидается, что при нажатии на раздел Начинки, произойдет скролл до заголовка Начинки", expectedResult, actualResult);
     }
 }
